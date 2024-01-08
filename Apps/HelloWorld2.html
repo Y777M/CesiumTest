@@ -18,7 +18,7 @@
       terrainProvider:Cesium.createWorldTerrain()
      });
 
-  var tileset1 = new Cesium.Cesium3DTileset({ url:'./jsondata4'});
+  var tileset1 = new Cesium.Cesium3DTileset({ url:'.Ootsu-shi/jsondata4'});
   tileset1.readyPromise.then(function(tileset1){
   vewer scene primitives.add(tileset1);
 
@@ -46,7 +46,16 @@
   <body>
     <div id="cesiumContainer"></div>
     <script>
-      const viewer = new Cesium.Viewer("cesiumContainer");
+      var viewer = new Cesium.Viewer('cesiumContainer',{
+	baseLayerPicker: true,
+	timeline: true,
+	animation: false,
+	homeButton: false,
+	vrButton: false,
+	geocoder: true,
+	sceneModePicker: false,
+	navigationHelpButton: true,
+      });
     </script>
   </body>
 </html>
