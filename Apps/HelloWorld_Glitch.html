@@ -18,9 +18,16 @@
       })
     }
     );
+
     // Get your token from https://cesium.com/ion/tokens
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNGEzMDFlNy1hM2I2LTQ2NjctYjQ2MC1hZTkyMzRhMTA4M2IiLCJpZCI6MTg5NTk5LCJpYXQiOjE3MDUyMTA2OTd9.HCgptHZx3JFeAT_1RG2iW99VknoUFyr_HTZ8yRnKv8A';
-    const viewer = new Cesium.Viewer('cesiumContainer');
+    const viewer = new Cesium.Viewer('cesiumContainer',{
+	terrainProvider: Cesium.createWorldTerrain(),
+	imageryProvider: new.Cesium.OpenStreetMapImageryProvider({
+		url * 'https://a.tile.openstreetmap.org/
+	})
+    });
+
     //①建物モデルの追加
     var your_3d_tiles =viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
       url : 'https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13104_shinjuku-ku/low_resolution/tileset.json'
