@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Cesium.js"></script>
+<link href="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    // Get your token from https://cesium.com/ion/tokens
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNGEzMDFlNy1hM2I2LTQ2NjctYjQ2MC1hZTkyMzRhMTA4M2IiLCJpZCI6MTg5NTk5LCJpYXQiOjE3MDUyMTA2OTd9.HCgptHZx3JFeAT_1RG2iW99VknoUFyr_HTZ8yRnKv8A';
+    const viewer = new Cesium.Viewer('cesiumContainer');
+    //①建物モデルの追加
+    var your_3d_tiles =viewer.scene.primitives.add(new Cesium.Cesium3DTileset({
+      url : 'https://plateau.geospatial.jp/main/data/3d-tiles/bldg/13100_tokyo/13104_shinjuku-ku/low_resolution/tileset.json'
+    }));
+    var polygon = viewer.entities.add({
+	name:"東京都庁",
+	description:"ここは東京都庁です。",
+	polygon : {
+		hierarchy : Cesium.Cartesian3.fromDegreesArrayHeights([
+			139.69163740881, 35.68903147599, 0,
+			139.69143377086, 35.68993508559, 0,
+			139.69184361318, 35.68999687609, 0,
+			139.69203616751, 35.68909180654, 0]),
+		extrudedHeight : 330.0,
+		material : Cesium.Color.YELLOW.withAlpha(0.5),
+		outline:true,
+		outlinecolor:Cesium.Color.BLACK
+	}
+   });
+
+	var label = viewer.entities.add({
+		position : Cesium.Cartesian3.fromDegrees(139.6917, 35.6895, 350),
+		label : {
+			text : "東京都庁",
+			font : "20px sans-serif",
+			fillColor : Cesium.Color.YELLOW,
+			outlineColor : Cesium.Color.BLACK,
+			outlineWidth : 2,
+			style : Cesium.LabelStyle.FILL_AND_OUTLINE
+		}
+   });
+
+    // ②カメラのズーム
+   viewer.camera.flyTo({
+	destination: Cesium.Cartesian3.fromDegrees(139.6995, 35.6836, 1000.0),
+	orientation : {
+		heading : Cesium.Math.toRadians(-45.0),
+		pitch : Cesium.Math.toRadians(-45.0),
+		roll : 0.0
+	}
+   });
+         
+   
+  </script>
+</body>
+</html>
