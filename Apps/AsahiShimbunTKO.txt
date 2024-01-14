@@ -32,7 +32,7 @@ var current_image = viewer.scene.imageryLayers.addImageryProvider(imageProvider)
 // 東京都中央区の建物データ（3D Tiles）
 var your_3d_tiles = viewer.scene.primitives.add(
     new Cesium.Cesium3DTileset({
-        url: 'https://www.geospatial.jp/ckan/dataset/plateau-tokyo23ku-3dtiles-2020',
+        url: 'https://assets.cms.plateau.reearth.io/assets/38/9cf378-c397-49bb-a4fb-894ce86647d8/13100_tokyo23-ku_2022_3dtiles_1_1_op_bldg_13102_chuo-ku_lod2/tileset.json',
     })
 );
 // 初期表示時のカメラ位置は朝日新聞社上
