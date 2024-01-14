@@ -9,6 +9,16 @@
   <div id="cesiumContainer"></div>
   <script>
     // Get your token from https://cesium.com/ion/tokens
+    // A. トークンを設定
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5N2UyMjcwOS00MDY1LTQxYjEtYjZjMy00YTU0ZTg5MmViYWQiLCJpZCI6ODAzMDYsImlhdCI6MTY0Mjc0ODI2MX0.dkwAL1CcljUV7NA7fDbhXXnmyZQU_c-G5zRx8PtEcxE';
+    // B. terrainProviderを設定
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrainProvider: new Cesium.CesiumTerrainProvider({
+          url: Cesium.IonResource.fromAssetId(770371)
+      })
+    }
+    );
+    // Get your token from https://cesium.com/ion/tokens
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNGEzMDFlNy1hM2I2LTQ2NjctYjQ2MC1hZTkyMzRhMTA4M2IiLCJpZCI6MTg5NTk5LCJpYXQiOjE3MDUyMTA2OTd9.HCgptHZx3JFeAT_1RG2iW99VknoUFyr_HTZ8yRnKv8A';
     const viewer = new Cesium.Viewer('cesiumContainer');
     //①建物モデルの追加
