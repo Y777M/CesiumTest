@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Cesium.js"></script>
-    <link
-      href="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Widgets/widgets.css"
-      rel="stylesheet"
-    />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div id="cesiumContainer"></div>
-    <script>
-      // Cesium ionのアクセストークン
- Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNGEzMDFlNy1hM2I2LTQ2NjctYjQ2MC1hZTkyMzRhMTA4M2IiLCJpZCI6MTg5NTk5LCJpYXQiOjE3MDUyMTA2OTd9.HCgptHZx3JFeAT_1RG2iW99VknoUFyr_HTZ8yRnKv8A';
- Cesium ViewerをcesiumContainerというIDのHTML要素に初期化
-// Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
+<head>
+<script src="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Cesium.js"></script>
+<link href="https://cesium.com/downloads/cesiumjs/releases/1.82/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div id="cesiumContainer"></div>
+  <script>
+    // Get your token from https://cesium.com/ion/tokens
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyNGEzMDFlNy1hM2I2LTQ2NjctYjQ2MC1hZTkyMzRhMTA4M2IiLCJpZCI6MTg5NTk5LCJpYXQiOjE3MDUyMTA2OTd9.HCgptHZx3JFeAT_1RG2iW99VknoUFyr_HTZ8yRnKv8A';
+    const viewer = new Cesium.Viewer('cesiumContainer');
+    // Terrainの指定（EGM96、国土数値情報5m標高から生成した全国の地形モデル、5m標高データが無い場所は10m標高で補完している）
 var viewer = new Cesium.Viewer('cesiumContainer', {
     terrainProvider: new Cesium.CesiumTerrainProvider({
         url: Cesium.IonResource.fromAssetId(770371),
